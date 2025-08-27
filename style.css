@@ -1,0 +1,283 @@
+/* Import Google Font */
+@import url("https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;500;700&display=swap");
+
+/* CSS Custom Properties (Root Variables) */
+:root {
+  /* Colors */
+  --color-primary-very-dark-magenta: hsl(300, 43%, 22%);
+  --color-primary-soft-pink: hsl(333, 80%, 67%);
+  --color-neutral-dark-grayish-magenta: hsl(303, 10%, 53%);
+  --color-neutral-light-grayish-magenta: hsl(300, 24%, 96%);
+  --color-neutral-white: hsl(0, 0%, 100%);
+
+  /* Typography */
+  --font-family-primary: "League Spartan", sans-serif;
+  --font-size-body: 0.9375rem; /* 15px */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700; /* Fixed: Changed from 1000 to 700 */
+
+  /* Layout breakpoints */
+  --breakpoint-mobile: 375px;
+  --breakpoint-desktop: 1440px;
+
+  /* Spacing system */
+  --space-xs: 0.5rem; /* 8px */
+  --space-sm: 1rem; /* 16px */
+  --space-md: 1.5rem; /* 24px */
+  --space-lg: 2rem; /* 32px */
+  --space-xl: 3rem; /* 48px */
+  --space-2xl: 4rem; /* 64px */
+}
+
+/* CSS Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 100%; /* 16px base */
+}
+
+body {
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-body);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.6;
+  color: var(--color-neutral-dark-grayish-magenta);
+  background-color: var(--color-neutral-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image: url("./images/bg-pattern-top-desktop.svg"),
+    url("./images/bg-pattern-bottom-desktop.svg");
+  background-repeat: no-repeat, no-repeat;
+  background-position: top left, bottom right;
+  background-size: auto, auto;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Focus styles for accessibility */
+*:focus {
+  outline: 2px solid var(--color-primary-soft-pink);
+  outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* FIXED: Proper Hero Section Styling */
+.social-proof {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "hero ratings"
+    "testimonials testimonials";
+  gap: var(--space-lg);
+  padding: var(--space-2xl);
+  max-width: 1350px;
+  margin: 0 auto;
+  align-items: start;
+  position: relative;
+}
+
+.hero {
+  grid-area: hero;
+  max-width: 550px;
+  padding-top: 2rem;
+}
+
+.hero__title {
+  font-size: 3.2rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary-very-dark-magenta);
+  text-align: left;
+  line-height: 0.85;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
+.hero__description {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: var(--color-neutral-dark-grayish-magenta);
+  text-align: left;
+  margin: 0;
+  padding: 0;
+  font-weight: var(--font-weight-medium);
+}
+
+/* FIXED: Ratings Section Styling */
+.ratings {
+  grid-area: ratings;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: flex-start;
+  padding-top: 4rem;
+  width: 100%;
+  margin-left: 6rem;
+}
+
+.rating {
+  background-color: var(--color-neutral-light-grayish-magenta);
+  padding: 1rem 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  width: 450px;
+}
+
+.rating__stars span {
+  color: #f7941f;
+  font-size: 1.3rem;
+  letter-spacing: 2px;
+}
+
+.rating__text {
+  color: var(--color-primary-very-dark-magenta);
+  font-weight: var(--font-weight-bold);
+  font-size: 1.1rem;
+}
+
+.rating:nth-child(1) {
+  margin-left: 0;
+}
+
+.rating:nth-child(2) {
+  margin-left: 3.5rem;
+}
+
+.rating:nth-child(3) {
+  margin-left: 7rem;
+}
+
+/* TESTIMONIALS SECTION - WITH STAGGERED HEIGHTS */
+.testimonials {
+  grid-area: testimonials;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+  align-items: start;
+}
+
+.testimonial {
+  background-color: var(--color-primary-very-dark-magenta);
+  color: var(--color-neutral-white);
+  padding: 2.5rem 2rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Subtle stagger for cards */
+.testimonial:nth-child(1) {
+  margin-top: 0rem; /* First card moves UP slightly */
+}
+
+.testimonial:nth-child(2) {
+  margin-top: 3rem; /* Second card slightly down */
+}
+
+.testimonial:nth-child(3) {
+  margin-top: 5rem; /* Third card moves down more */
+}
+
+.testimonial__header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.testimonial__avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.testimonial__info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.testimonial__name {
+  font-size: 1rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-neutral-white);
+  line-height: 1.2;
+}
+
+.testimonial__status {
+  font-size: 0.85rem;
+  color: var(--color-primary-soft-pink);
+  font-weight: var(--font-weight-regular);
+  opacity: 0.9;
+}
+
+.testimonial__quote {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--color-neutral-white);
+  font-weight: var(--font-weight-regular);
+  opacity: 0.95;
+}
+
+.attribution {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+}
